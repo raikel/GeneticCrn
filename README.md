@@ -9,8 +9,17 @@ In order to run the simulations you need Matlab 2015a or higher and a C compiler
 ```bash
 git clone https://github.com/raikel/GeneticCrn
 ```
-Open Matlab and add the source directory `src` (and all its subfolders) to the Matlab search path. In the Matlab workspace, open the directory `src\lib\mex` and type in the Command Window:
+Open Matlab and add the source directory `src` (and all its subfolders) to the Matlab search path. In the Matlab workspace, open the directory `src\lib\mex` and type in the command window:
 ```bash
 compile
 ```
-This will compile all the source `mex` files.  
+This will compile all the source `mex` files. To run the simulation with default parameters values, type in the Matlab command window:
+```bash
+stats = netsim()
+```
+
+## Cite
+Please cite this work as
+```
+Bordón, R. B., Sánchez, S. M., Fernandez, E. M., Souza, R. D., & Alves, H. (2014, June). Genetic algorithm aided transmit power control in cognitive radio networks. In 2014 9th International Conference on Cognitive Radio Oriented Wireless Networks and Communications (CROWNCOM) (pp. 61-66). IEEE.
+```
