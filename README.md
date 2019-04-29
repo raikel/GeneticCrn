@@ -20,4 +20,4 @@ stats = netsim()
 
 ## Cite
 Please cite this work as
-> Bordón, R. B., Sánchez, S. M., Fernandez, E. M., Souza, R. D., & Alves, H. (2014, June). Genetic algorithm aided transmit power control in cognitive radio networks. In 2014 9th International Conference on Cognitive Radio Oriented Wireless Networks and Communications (CROWNCOM) (pp. 61-66). IEEE.
+> Bordón, R., Sánchez, S. M., Fernandez, E. M., Souza, R. D., & Alves, H. (2014, June). Genetic algorithm aided transmit power control in cognitive radio networks. In 2014 9th International Conference on Cognitive Radio Oriented Wireless Networks and Communications (CROWNCOM) (pp. 61-66). IEEE.
