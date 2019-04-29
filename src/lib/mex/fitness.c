@@ -146,11 +146,6 @@ void fitnessFcn(mwSize genomeLength, struct Gen *gen, struct Fitness *fitness)
 	}
   // Compute network SINR
   getNetSinr(sinr, channels, fitness->power, fitness->noise, linksQ);
-  //mexPrintf("\n");
- //for (i = 0; i < linksQ; i++) {		    
-	//	mexPrintf("%f ", sinr[i]);
-	//}
-  //mexPrintf("\n");
   // Compute the fitness value
   gen->score[0] = 0;
   gen->score[1] = 0;

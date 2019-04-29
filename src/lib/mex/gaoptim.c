@@ -7,7 +7,7 @@ void mexFunction( int nlhs, mxArray *plhs[],
 				  int nrhs, const mxArray*prhs[] )
      
 {
-	mwIndex i,j;
+	mwIndex i;
   mwSize linksQ, genomeLength;
   mwSize nWorlds;
   mxArray *channels;
@@ -40,15 +40,7 @@ void mexFunction( int nlhs, mxArray *plhs[],
   plhs[0] = mxCreateDoubleMatrix(linksQ, nWorlds, mxREAL);
   // Get pointer to return argument data array
   power = mxGetPr(plhs[0]);
-  
- // mexPrintf("\n");
-//   for(i = 0; i < linksQ; i++) {
-//     for(j = 0; j < linksQ; j++) {
-//       mexPrintf("%e ", fitness.channels[j*linksQ + i]);
-//     }
-//     mexPrintf("\n"); 
-//   }
-//     
+       
   // Iterate throw the fitness worlds
   for(i = 0; i < nWorlds; i++) {
     // Copy solution to the output array

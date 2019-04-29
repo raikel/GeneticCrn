@@ -1,19 +1,3 @@
-/*=================================================================
- *
- * DISTMATRIX.C	Sample .MEX file corresponding to DISTMATRIX.M
- *	        Compute distance matrix. 
- *
- * The calling syntax is:
- *
- *		d = distmatrix(x1, x2)
- * In X1 and X2 each column represents a point.
- * In D each column J contains distances form point J in X1 to every points in X2
- *
- * This is a MEX-file for MATLAB.  
- * Copyright 1984-2006 The MathWorks, Inc.
- *
- *=================================================================*/
-/* $Revision: 1.10.6.4 $ */
 #include "ga.h"
 
 void gaParamSet(Ga *ga, mxArray *gaOptions)
@@ -566,71 +550,6 @@ void fitScalingTop(Gen *population, FitScaling *fitScaling, mwSize popSize)
     }
 }
 
-/* Offset and scale fitness to desired range.
-*   This function calculates FITNESS of each gen in 
-*   struct POPULATION using its SCORE, and NPARENTS and 
-*   MAXIMUMSURVIVALRATE in struct FITSCALING. 
-*   MAXIMUMSURVIVALRATE is the ratio of the expectation of the best
-*   individual to the average expectation of the population. 
-*   Values near 2 have been found to work well. The genes in 
-*   POPULATION must be oredered in asscendig order according its SCORE 
-void fitScalingShiftLinear(Gen *population, FitScaling *fitScaling, mwSize popSize)
-{
-    double minScore, maxScore, meanScore;
-    double desiredMean, scale, offset;    
-    mwIndex i;
-
-    // Compute mean score
-    meanScore = 0;
-    for (i = 0; i < popSize; i++)
-    {
-        meanScore = meanScore + (population[i]).score;
-    }
-    meanScore = meanScore/popSize;
-
-    // We're MINIMIZING here 
-    maxScore  = -(population[0]).score;
-    meanScore = -meanScore;
-    minScore  = -(population[popSize - 1]).score;
-
-    // Take care of the degenerate case where all scores are the same
-    if (maxScore == minScore)
-    {
-        for (i = 0; i < popSize; i++)
-        {
-            (population[i]).expectation = 1/popSize;
-        }
-    }
-    
-    // Since we must sum to nParents, our mean must be this:
-    desiredMean = 1/popSize;
-
-    // We want to find a scale and an offset so that:
-    // 1. scale * max + offset = MaximumSurvivalRate * desiredMean
-    // and
-    // 2.  Scale * mean + offset = desiredMean 
-    // Subtracting 2 from 1, Factoring out scale and desiredMean, and dividing
-    // both sides by max - mean gives:
-    scale = desiredMean * (fitScaling->maximumSurvivalRate - 1) / (maxScore - meanScore);
-
-    // offset so that the mean is desiredMean
-    offset = desiredMean - (scale * meanScore);
-
-    // if the above causes the least fitness to go negative,
-    // change our goal to have a min of zero & mean of nParents/length(scores)
-    if (offset + scale * minScore < 0)
-    {
-        scale = desiredMean / (meanScore - minScore);
-        offset = desiredMean - (scale * meanScore);
-    }
-
-    for (i = 0; i < popSize; i++)
-    {
-      (population[i]).expectation = offset + scale*(population[i]).score;
-    }    
-}
- */
-
 Gen *selectionRoulette(Gen *population, Selection *selection, mwSize popSize)
 {
     mwIndex i;
@@ -648,6 +567,7 @@ Gen *selectionRoulette(Gen *population, Selection *selection, mwSize popSize)
     }
     
     mexErrMsgTxt("Roulette selection method failed.");
+    return NULL;   
 }
 
 Gen *selectionTournament(Gen *population, Selection *selection, mwSize popSize)
@@ -746,7 +666,7 @@ Gen *evolution(Ga *ga, Fitness *fitness)
   initPopulation(ga);
   // Main loop
   for (i = 0; i < stopping->nGenerations; i++)
-  { //mexPrintf("\n generation = %d \n", i);
+  {
     // Update population         
     for (j = 0; j < popSize; j++)
     {

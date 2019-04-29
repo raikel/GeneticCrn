@@ -10,23 +10,23 @@ function stats = netsim(varargin)
 
   % Simulation parameters defaults values
   defParams = {...
-    'pLinksQ',        1,  ... % cantidad de enlaces primarios
-    'sLinksQ',        10,  ... % cantidad de enlaces secundarios
-    'pSinrThr',       10, ... % umbral de SINR de los enlaces primarios
-    'sSinrThr',       2, ...  % umbral de SINR de los enlaces secundarios
-    'pPower',         1,  ... % potencia de los enlaces primarios
-    'sPowerMin',      0,  ... % potencia minima de los enlaces secundarios
-    'sPowerMax',      2,  ... % potencia maxima de los enlaces primarios 
-    'noise',          eps, ... % ruido para todos los enlaces
-    'radius',         100, ...
-    'txRange',        10, ...
-    'xOverFraction',  0.7, ...
-    'nEliteKids',     uint32(2), ...  
-    'mutationShrink', 1, ...
-    'mutationScale',  0.1, ...
-    'nGenerations',   uint32(500) ...
-    'popSize', uint32(40) ...
-    };
+    'pLinksQ',        1,  ...         % number of primary links
+    'sLinksQ',        10,  ...        % number of secondary links
+    'pSinrThr',       10, ...         % SINR threshold of primary links
+    'sSinrThr',       2, ...          % SINR threshold of secondary links
+    'pPower',         1,  ...         % transmit power of primary links
+    'sPowerMin',      0,  ...         % minimum transmit power of secondary links
+    'sPowerMax',      2,  ...         % maximum transmit power of secondary links
+    'noise',          eps, ...        % noise power of all links
+    'radius',         100, ...        % cell radius (m)
+    'txRange',        10, ...         % secondary link distance (m)
+    'xOverFraction',  0.7, ...        % cross over fraction of GA
+    'nEliteKids',     uint32(2), ...  % number of elite individuals of GA
+    'mutationShrink', 1, ...          % mutation shrink parameter of GA
+    'mutationScale',  0.1, ...        % mutation scale parameter of GA
+    'nGenerations',   uint32(500) ... % number of generations of GA
+    'popSize',        uint32(40) ...  % population size parameter of GA
+  };
 
   % System model definition
   system = struct(...
