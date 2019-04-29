@@ -14,12 +14,10 @@ Open Matlab and add the source directory `src` (and all its subfolders) to the M
 compile
 ```
 This will compile all the source `mex` files. To run the simulation with default parameters values, type in the Matlab command window:
-```bash
+```Matlab
 stats = netsim()
 ```
 
 ## Cite
 Please cite this work as
-```
-Bordón, R. B., Sánchez, S. M., Fernandez, E. M., Souza, R. D., & Alves, H. (2014, June). Genetic algorithm aided transmit power control in cognitive radio networks. In 2014 9th International Conference on Cognitive Radio Oriented Wireless Networks and Communications (CROWNCOM) (pp. 61-66). IEEE.
-```
+> Bordón, R. B., Sánchez, S. M., Fernandez, E. M., Souza, R. D., & Alves, H. (2014, June). Genetic algorithm aided transmit power control in cognitive radio networks. In 2014 9th International Conference on Cognitive Radio Oriented Wireless Networks and Communications (CROWNCOM) (pp. 61-66). IEEE.
